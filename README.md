@@ -20,7 +20,7 @@ The system consists of three meters: the supply meter, 1 and customer meters, 2 
 ![image](https://user-images.githubusercontent.com/72353423/143724678-79026a4c-a063-4c91-a661-bc4c0a2afb88.png)
 
 ## Flow Chart
-The system’s flow chart diagram is as shown in figure below.
+The system’s flow chart diagram is as shown in the figure below.
 
 ![image](https://user-images.githubusercontent.com/72353423/143724711-998635d7-13cf-4d9c-80db-d8c720d86887.png)
 
@@ -36,10 +36,286 @@ The system’s flow chart diagram is as shown in figure below.
 8. **Appropriate pipe fittings**
 
 ## Schematic Diagram
+
 The schematic diagram of the system was designed using Autodesk's Eagle EDA software illustrating how the various components are interconnected. Custom libraries for the solenoid valve and the water flow sensor were created.
 
 ![image](https://user-images.githubusercontent.com/72353423/143725199-f4645274-cabb-4db8-8399-71c8b1603733.png)
 
 ## Firmware Walkthrough
 
+- **Libraries**
+
+
+The ESP8266WiFi, ESP8266WebServer, ESP8266mDNS and the ThingSpeak libraries were included.
+
+```
+#include <ESP8266WiFi.h> // ESP8266WiFi library
+#include<ESP8266WebServer.h> // WebServer library
+#include <ESP8266mDNS.h> // mDNS library
+#include<ThingSpeak.h> // ThingSpeak library
+```
+- **Variables and Constants**
+
+The variables and constants were defined as follows.
+```
+const int measuringInterval = 0.1 * 1000; // measure flow every 1 second
+const int postingInterval = 15 * 1000; // post data every 15 seconds
+
+long currentMillis = 0, previousMillis = 0;
+
+float calibrationFactor_1 = 0.1;
+volatile byte pulseCount_1;
+byte pulse1Sec_1 = 0;
+float flowRate_1;
+unsigned long flowMilliLitres_1, totalMilliLitres_1;
+float flowLitres_1, totalLitres_1;
+
+// Control solenoid valve
+const int controlChannelID = 1583388;
+unsigned int valve1 = 4;
+```
+
+- **Wi-Fi Settings**
+
+The SSID and password are set to allow the NodeMCU to connect to a network
+```
+const char* ssid = "mySSID"; // wireless network name (SSID)
+const char* password = "myPassword"; // Wi-Fi network password
+```
+
+- ** ThingSpeak Settings**
+
+ThingSpeak credentials and API key are set to allow sending data to specific channel.
+```
+// ThingSpeak Settings
+const int channelID = YYYYYYY;
+String writeAPIKey = "XXXXXXXXXXXXXXXX";
+const char* server = "api.thingspeak.com";
+```
+
+- **Serial Communication**
+
+The baud rate for serial communication  set was to 115200.
+```
+  void setup() {
+  Serial.begin(115200); // Start the Serial communication
+  delay(100);
+```
+
+- **Define pins and initialize variables**
+
+```
+  pulseCount_1 = 0;
+  flowRate_1 = 0.0;
+  flowMilliLitres_1 = 0;
+  totalMilliLitres_1 = 0;
+  
+  pinMode(flowSensor_1, INPUT_PULLUP);  
+  pinMode(relayValve_1, OUTPUT);
+  digitalWrite(relayValve_1, 0);
+```
+
+- **Connect to Wi-Fi network**
+
+The NodeMCU waits until it is connected to a network then sends the IP address, Netmask and Gateway to the serial monitor.
+```
+WiFi.begin(ssid, password);             // Connect to the WiFi network
+  Serial.print("Connecting to ");
+  Serial.print(ssid); Serial.println("...");
+
+  while (WiFi.status() != WL_CONNECTED) { // Wait for the Wi-Fi to connect
+    delay(500);
+  }
+  
+  Serial.println("WiFi connected!"); 
+  // Send the IP address of the ESP8266 to serial monitor 
+  Serial.print("IP address:\t");
+  Serial.println(WiFi.localIP()); 
+  // Send the Netmask of the ESP8266        
+  Serial.print("Netmask:\t");
+  Serial.println(WiFi.subnetMask());  
+  // Send the Gateway of the ESP8266
+  Serial.print("Gateway:\t");
+  Serial.println(WiFi.gatewayIP());
+```
+
+- **Measure Wi-Fi Strength**
+
+The Wi-Fi strength is measured and sent to the serial monitor.
+```
+// Measure Signal Strength (RSSI) of Wi-Fi connection
+long rssi = WiFi.RSSI();
+String strgth = String(rssi);
+Serial.println("signal strength: " + strgth + "dB\n");
+```
+
+- **HTTP server**
+
+The HTTP server that listens for HTTP request on port 80. The mDNS responder is also started to resolve IP address to a local domain name.
+```
+  // Create a webserver object that listens for HTTP request on port 80
+  ESP8266WebServer server(80);
+
+  // Start the mDNS responder for esp8266.local
+  if (MDNS.begin("esp8266")) {              
+  Serial.println("mDNS responder started");
+  } else {
+    Serial.println("Error setting up MDNS responder!");
+  }
+
+  server.begin(); // Actually start the server
+  Serial.println("HTTP server started");
+  
+  //create interrupt and call a function when change is detected
+  attachInterrupt(digitalPinToInterrupt(flowSensor_1), pulseCounter_1, FALLING);
+
+  ThingSpeak.begin(client);
+```
+
+- **FLow Sensor Interrrupt**
+
+An interrupt and a call function is created to detect water flow when the falling edge of the pulse is received.
+```
+//create interrupt and call a function when change is detected
+  attachInterrupt(digitalPinToInterrupt(flowSensor_1), pulseCounter_1, FALLING);
+```
+The pulse count is incremented for every pulse that is detected.
+```
+void IRAM_ATTR pulseCounter_1(){
+  pulseCount_1++;
+}
+```
+
+- **Flowrate and Volume Calculation**
+
+The flowrate and volume through the meter is measured and calculated after every measuring interval. The total volume is the cumulative volume in the entire measuring time.
+```
+currentMillis = millis();
+  // calculate after every measuring interval
+  if (currentMillis - previousMillis > measuringInterval) {
+    
+    pulse1Sec_1 = pulseCount_1;
+    pulseCount_1 = 0;
+
+     //calculate flow rate in litres per min
+    flowRate_1 = ((1000.0 / (millis() - previousMillis)) * pulse1Sec_1) / calibrationFactor_1;
+    previousMillis = millis();
+
+    //flowrate in millilitres per second
+    flowMilliLitres_1 = (flowRate_1 / 60) * 1000;
+
+    //flowrate in litres per second
+    flowLitres_1 = (flowRate_1 / 60);
+
+    //add volume flowed in this second to cumulative totals
+    totalMilliLitres_1 += flowMilliLitres_1;
+    totalLitres_1 += flowLitres_1;
+
+    // Print the flow rate 1 for this second in litres / minute
+    Serial.print("Flow rate 1: ");
+    Serial.print(flowMilliLitres_1);
+    Serial.print(" mL/s\t");
+    
+    // Print the cumulative total of litres flowed through meter 1 since starting
+    Serial.print("Volume through meter 1: ");
+    Serial.print(totalMilliLitres_1);
+    Serial.print(" mL\n");
+//    Serial.println("Volume through meter 1: "); //Uncomment for volume in litres
+//    Serial.print(totalLitres_1);
+//    Serial.println(" L\n");
+```
+
+- **API request body**
+
+The body of API request with consumption data are constructed waiting to be posted to ThingSpeak on specific fields.
+```
+      // Construct API request body
+      String body = "field1=";
+      body += String(float(flowRate_1));
+      body += "&field2=";
+      body += String(totalMilliLitres_1);
+      body += "&field3=";
+      body += strgth;
+      body += "\r\n\r\n";
+```
+
+- **Post to ThingSpeak**
+
+The API requests bodies are written to the corresponding fields on ThingSpeak on the specified channel. Feedback on if the data was sent successfully is sent to the serial monitor.
+```
+      client.print("POST /update HTTP/1.1\n");
+      client.print("Host: api.thingspeak.com\n");
+      client.print("Connection: close\n");
+      client.print("X-THINGSPEAKAPIKEY: " + writeAPIKey + "\n");
+      client.print("Content-Type: application/x-www-form-urlencoded\n");
+      client.print("Content-Length: ");
+      client.print(body.length());
+      client.print("\n\n");
+      client.print(body);
+      client.print("\n\n");
+      Serial.println("data sent\n");
+```
+
+- **Solenoid Valve Status**
+
+The status of solenoid valve i.e. if it is open or closed is checked from the control feed and status sent to the serial monitor.
+```
+      //get the last data of the fields
+      int valve_1 = ThingSpeak.readFloatField(controlChannelID, valve1);
+    
+      if(valve_1 == 1){
+        digitalWrite(relayValve_1, 1); // Open solenoid valve
+        Serial.println("Solenoid valve is Closed!\n");
+        }
+      else if(valve_1 == 0){
+        digitalWrite(relayValve_1, 0); //Close solenoid valve
+        Serial.println("Solenoid valve is Open!\n");
+        }
+```
+
+- **Wait and Post Again**
+
+```
+    client.stop();
+    
+    Serial.print("Waiting ");
+    Serial.print(postingInterval/1000);
+    Serial.print(" seconds to post again...\n");
+    
+    // wait and then post again
+    delay(postingInterval);
+```
+
+## ThingSpeak Apps
+
+- ### MATLAB Analysis 
+
+The MATLAB Analysis app was used to perform loss analysis as shown below.
+
+![image](https://user-images.githubusercontent.com/72353423/143726415-56e53196-edf4-4f54-a19c-f3d33ab226ca.png)
+
+- ### ThingTweet
+
+The ThingTweet app is utilized to send alert consumers via a tweet that the supply meter valve is closed due to any predetermined circumstance is encountered. The tweet is configured as below.
+
+![image](https://user-images.githubusercontent.com/72353423/143726436-f2adc767-de1d-419e-afd9-4d635c46bcc0.png)
+
+- ### TimeControl
+
+TimeControl app feature was used in loss analysis calculation where losses due to leakages was calculated every 5 minutes as shown in the configuration below.
+
+![image](https://user-images.githubusercontent.com/72353423/143726462-ee1d3176-6987-41e1-803f-9ecf218db4f1.png)
+
+- ### React
+
+React app feature was also used in the project in several instances such as sending email, SMS and VoIP calls when a certain condition is encountered.
+
+![image](https://user-images.githubusercontent.com/72353423/143726570-775248b6-6de2-47a6-9685-e00a263ea586.png)
+
+## Interface
+The android app used as interface to visualize consumption data and control water supply remotely was designed using [MIT App Inventor](https://appinventor.mit.edu/).
+
+The .aia source code file is attached - named as 'Smart_Water_App.aia'. 
+
+Screenshots of some of the pages are as shown below. 
 
