@@ -37,7 +37,9 @@ The system’s flow chart diagram is as shown in the figure below.
 
 ## Schematic Diagram
 
-The schematic diagram of the system was designed using Autodesk's Eagle EDA software illustrating how the various components are interconnected. Custom libraries for the solenoid valve and the water flow sensor were created.
+The schematic diagram of the system was designed using Autodesk's Eagle EDA software illustrating how the various components are interconnected. 
+
+Custom libraries for the solenoid valve and the water flow sensor were created.
 
 ![image](https://user-images.githubusercontent.com/72353423/143725199-f4645274-cabb-4db8-8399-71c8b1603733.png)
 
@@ -71,7 +73,7 @@ unsigned long flowMilliLitres_1, totalMilliLitres_1;
 float flowLitres_1, totalLitres_1;
 
 // Control solenoid valve
-const int controlChannelID = 1583388;
+const int controlChannelID = XXXXXXX; //ThingSpeak channel used for control
 unsigned int valve1 = 4;
 ```
 
@@ -315,7 +317,9 @@ React app feature was also used in the project in several instances such as send
 ## Interface
 The android app used as interface to visualize consumption data and control water supply remotely was designed using [MIT App Inventor](https://appinventor.mit.edu/).
 
-The .aia source code file is attached - named as 'Smart_Water_App.aia'. 
+The .aia source code file is attached - named as ['Smart_Water_App.aia'](https://github.com/tinegachris/Smart-Water-Management-System/). 
 
-Screenshots of some of the pages are as shown below. 
+> ![login](https://user-images.githubusercontent.com/72353423/143765739-63cd2895-2d36-458e-8adc-cd486289b141.jpeg)                   ![1](https://user-images.githubusercontent.com/72353423/143765805-cafc4de6-42e1-433c-a72a-d6aa19b62829.jpeg)                        ![2](https://user-images.githubusercontent.com/72353423/143765811-6a02cca4-9843-4eb9-853c-c3ec72c49c56.jpeg)
+
+## Results
 
