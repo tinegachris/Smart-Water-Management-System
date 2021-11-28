@@ -317,9 +317,32 @@ React app feature was also used in the project in several instances such as send
 ## Interface
 The android app used as interface to visualize consumption data and control water supply remotely was designed using [MIT App Inventor](https://appinventor.mit.edu/).
 
-The .aia source code file is attached - named as ['Smart_Water_App.aia'](https://github.com/tinegachris/Smart-Water-Management-System/). 
+The .aia source code file is attached - named as ['Smart_Water_App.aia'](https://github.com/tinegachris/Smart-Water-Management-System/blob/main/Smart_Water_App.aia). 
 
-> ![login](https://user-images.githubusercontent.com/72353423/143765739-63cd2895-2d36-458e-8adc-cd486289b141.jpeg)                   ![1](https://user-images.githubusercontent.com/72353423/143765805-cafc4de6-42e1-433c-a72a-d6aa19b62829.jpeg)                        ![2](https://user-images.githubusercontent.com/72353423/143765811-6a02cca4-9843-4eb9-853c-c3ec72c49c56.jpeg)
+> ![login](https://user-images.githubusercontent.com/72353423/143765739-63cd2895-2d36-458e-8adc-cd486289b141.jpeg)                   ![3](https://user-images.githubusercontent.com/72353423/143766149-68ce4067-780e-4de3-880f-32bce4c8cbf7.jpeg)
 
 ## Results
 
+The system utilized IoT solutions to enable remote and automatic and real-time measurement of water consumption data which is transmitted to a remote server for manipulation and analysis. 
+
+![image](https://user-images.githubusercontent.com/72353423/143767085-4a4b431b-d1fb-4f2b-97e7-3d9114339855.png)
+
+The data was then displayed on an interface where consumption metrics, over a period, was be viewed. 
+
+> ![1](https://user-images.githubusercontent.com/72353423/143765805-cafc4de6-42e1-433c-a72a-d6aa19b62829.jpeg)                        ![2](https://user-images.githubusercontent.com/72353423/143765811-6a02cca4-9843-4eb9-853c-c3ec72c49c56.jpeg)
+
+The system developed aggregated multiple meters and performed loss analysis hence detecting water leakage. SMS, call, email and [tweet](https://twitter.com/smart_water_app/status/1463631460607344641?t=qJkpamW6DDiH7IFD41dn9Q&s=19) alerts allowed appropriate actions to be taken. 
+
+> ![tweet](https://user-images.githubusercontent.com/72353423/143766827-0022bb13-15cc-4861-93f9-f9cb8a5c96c8.jpeg)        ![image](https://user-images.githubusercontent.com/72353423/143766895-02cd9f7e-3cf2-47e9-b354-a3d82ffe1718.png)
+
+Users could control water supply remotely from the interface based on actionable decisions.
+
+> ![closed](https://user-images.githubusercontent.com/72353423/143767131-f9ac1499-9940-4962-b76b-2b50bb99aceb.jpeg)     ![opened](https://user-images.githubusercontent.com/72353423/143767141-f0ab6927-3d19-4455-b9dc-a5055858f736.jpeg)
+> ![image](https://user-images.githubusercontent.com/72353423/143767154-0f6dbd26-84ef-49ef-926b-4a0874bd9bb8.png)
+
+## Conclusion
+
+The Smart Water Management System solution would be revolutionary for home and industrial systems by enabling remote and automatic measurement of consumption data, convenient monitoring and control of water systems and reducing water leakage - reducing non-revenue water hence saving on cost.
+
+##
+All Rights Reserved.
