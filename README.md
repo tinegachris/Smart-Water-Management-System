@@ -3,11 +3,11 @@
 
 ![system pic](https://user-images.githubusercontent.com/72353423/143723893-957b3019-5a33-4039-9fa1-18d72518ff67.jpeg)
 
-## Acknowledgement
-I acknowledge the efforts of my project partner Mr Thoenes Kimani and my project supervisor Mr Samson N. Njoroge, for ensuring this project was successful. Many thanks to all our friends and family for the encouragement and support throughout the period.
-
 ## Abstract
 The Smart Water Management System project aggregates three meters to enable remote and automatic real-time measurement of water consumption. Based on actionable decisions such as water leakage and consumption metrics, water supply through the pipes is controlled using solenoid valves. The consumer and the supplier can monitor, visualize consumption metrics and control the system through the designed android interface.
+
+## Acknowledgement
+I acknowledge the efforts of my project partner [Mr Thoenes Kimani](https://www.linkedin.com/in/thoenes-kimani-607682186/) and my project supervisor [Mr Samson N. Njoroge](https://www.linkedin.com/in/samson-n-njoroge-23a77817/?originalSubdomain=ke), for ensuring this project was successful. Many thanks to all our friends and family for the encouragement and support throughout the period.
 
 ## System Overview
 The system consists of four functional modules, namely: the physical device, the gateway through which the device communicates with the backend service, the backend that allows storage of data, analysis, data access and notifications and the interface that allows visualization and control.
@@ -85,7 +85,7 @@ const char* ssid = "mySSID"; // wireless network name (SSID)
 const char* password = "myPassword"; // Wi-Fi network password
 ```
 
-- ** ThingSpeak Settings**
+- **ThingSpeak Settings**
 
 ThingSpeak credentials and API key are set to allow sending data to specific channel.
 ```
@@ -288,7 +288,7 @@ The status of solenoid valve i.e. if it is open or closed is checked from the co
     delay(postingInterval);
 ```
 
-## ThingSpeak Apps
+## **ThingSpeak Apps**
 
 - ### MATLAB Analysis 
 
@@ -314,10 +314,12 @@ React app feature was also used in the project in several instances such as send
 
 ![image](https://user-images.githubusercontent.com/72353423/143726570-775248b6-6de2-47a6-9685-e00a263ea586.png)
 
-## Interface
+## **Interface**
 The android app used as interface to visualize consumption data and control water supply remotely was designed using [MIT App Inventor](https://appinventor.mit.edu/).
 
 The .aia source code file is attached - named as ['Smart_Water_App.aia'](https://github.com/tinegachris/Smart-Water-Management-System/blob/main/Smart_Water_App.aia). 
+
+Download and install the app [Smart Water App](https://github.com/tinegachris/Smart-Water-Management-System/blob/main/Smart_Water_App.app)
 
 > ![login](https://user-images.githubusercontent.com/72353423/143765739-63cd2895-2d36-458e-8adc-cd486289b141.jpeg)                   ![3](https://user-images.githubusercontent.com/72353423/143766149-68ce4067-780e-4de3-880f-32bce4c8cbf7.jpeg)
 
