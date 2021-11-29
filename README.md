@@ -1,5 +1,15 @@
+[![GitHub license](https://img.shields.io/github/license/tinegachris/Smart-Water-Management-System.svg)](https://github.com/tinegachris/Smart-Water-Management-System/blob/main/LICENSE)
+[![GitHub contributors](https://img.shields.io/github/contributors/tinegachris/Smart-Water-Management-System.svg)](https://github.com/tinegachris/Smart-Water-Management-System/graphs/contributors)
+[![GitHub issues](https://img.shields.io/github/issues/tinegachris/Smart-Water-Management-System.svg)](https://github.com/tinegachris/Smart-Water-Management-System/issues)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/tinegachris/Smart-Water-Management-System.svg)](https://github.com/tinegachris/Smart-Water-Management-System/pulls)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
+[![GitHub watchers](https://img.shields.io/github/watchers/tinegachris/Smart-Water-Management-System.svg?style=social&label=Watch)](https://github.com/Jtinegachris/Smart-Water-Management-System/watchers)
+[![GitHub forks](https://img.shields.io/github/forks/tinegachris/Smart-Water-Management-System.svg?style=social&label=Fork)](https://github.com/tinegachris/Smart-Water-Management-System/network/members)
+[![GitHub stars](https://img.shields.io/github/stars/tinegachris/Smart-Water-Management-System.svg?style=social&label=Sta)](https://github.com/tinegachris/Smart-Water-Management-System/stargazers)
+
 # Smart-Water-Management-System
-> ### **Final Project 2021**
+>Final Project 2021
 
 ![system pic](https://user-images.githubusercontent.com/72353423/143723893-957b3019-5a33-4039-9fa1-18d72518ff67.jpeg)
 
