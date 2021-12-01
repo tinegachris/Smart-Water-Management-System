@@ -17,7 +17,7 @@
 The Smart Water Management System project aggregates three meters to enable remote and automatic real-time measurement of water consumption. Based on actionable decisions such as water leakage and consumption metrics, water supply through the pipes is controlled using solenoid valves. The consumer and the supplier can monitor, visualize consumption metrics and control the system through the designed android interface.
 
 ## Acknowledgement
-I acknowledge the efforts of my project partner [Mr Thoenes Kimani](https://www.linkedin.com/in/thoenes-kimani-607682186/) and my project supervisor [Mr Samson N. Njoroge](https://www.linkedin.com/in/samson-n-njoroge-23a77817/?originalSubdomain=ke), for ensuring this project was successful. Many thanks to all our friends and family for the encouragement and support throughout the period.
+I acknowledge the efforts of my project partner Mr [Thoenes Kimani](https://www.linkedin.com/in/thoenes-kimani-607682186/) and my project supervisor Mr [Samson N. Njoroge](https://www.linkedin.com/in/samson-n-njoroge-23a77817/?originalSubdomain=ke), for ensuring this project was successful. Many thanks to all our friends and family for the encouragement and support throughout the period.
 
 ## System Overview
 The system consists of four functional modules, namely: the physical device, the gateway through which the device communicates with the backend service, the backend that allows storage of data, analysis, data access and notifications and the interface that allows visualization and control.
@@ -327,9 +327,9 @@ React app feature was also used in the project in several instances such as send
 ## **Interface**
 The android app used as interface to visualize consumption data and control water supply remotely was designed using [MIT App Inventor](https://appinventor.mit.edu/).
 
-The .aia source code file is attached - named as ['Smart_Water_App.aia'](https://github.com/tinegachris/Smart-Water-Management-System/blob/main/Smart_Water_App.aia). 
+The [.aia source code](https://github.com/tinegachris/Smart-Water-Management-System/blob/main/Smart_Water_App.aia) file is attached. 
 
-Download and install the app [Smart Water App](https://github.com/tinegachris/Smart-Water-Management-System/blob/main/Smart_Water_App.app)
+Download and install the [android app](https://github.com/tinegachris/Smart-Water-Management-System/blob/main/Smart_Water_App.app)
 
 > ![login](https://user-images.githubusercontent.com/72353423/143765739-63cd2895-2d36-458e-8adc-cd486289b141.jpeg)                   ![3](https://user-images.githubusercontent.com/72353423/143766149-68ce4067-780e-4de3-880f-32bce4c8cbf7.jpeg)
 
@@ -357,4 +357,3 @@ Users could control water supply remotely from the interface based on actionable
 The Smart Water Management System solution would be revolutionary for home and industrial systems by enabling remote and automatic measurement of consumption data, convenient monitoring and control of water systems and reducing water leakage - reducing non-revenue water hence saving on cost.
 
 ##
-All Rights Reserved.
