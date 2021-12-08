@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="dots" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -5293,8 +5293,8 @@ Source: DCJ0303.pdf</description>
 <part name="VALVE1" library="Solenoid-valve" deviceset="SOLENOID-VALVE" device="SOLENOID-CONNECTOR"/>
 <part name="D3" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="1N4004" device="" package3d_urn="urn:adsk.eagle:package:43336/1"/>
 <part name="U2" library="linear" deviceset="78LXXZ" device="" value="78L05"/>
-<part name="C5" library="rcl" deviceset="C-EU" device="025-025X050" value="0.22u"/>
-<part name="C6" library="rcl" deviceset="C-EU" device="025-025X050" value="0.1u"/>
+<part name="C1" library="rcl" deviceset="C-EU" device="025-025X050" value="0.22u"/>
+<part name="C2" library="rcl" deviceset="C-EU" device="025-025X050" value="0.1u"/>
 <part name="J1" library="con-jack" library_urn="urn:adsk.eagle:library:154" deviceset="DCJ0303" device="" package3d_urn="urn:adsk.eagle:package:7493/1"/>
 </parts>
 <sheets>
@@ -5372,11 +5372,11 @@ Source: DCJ0303.pdf</description>
 <attribute name="NAME" x="119.38" y="86.995" size="1.778" layer="95"/>
 <attribute name="VALUE" x="119.38" y="84.455" size="1.778" layer="96"/>
 </instance>
-<instance part="C5" gate="G$1" x="111.76" y="76.2" smashed="yes">
+<instance part="C1" gate="G$1" x="111.76" y="76.2" smashed="yes">
 <attribute name="NAME" x="113.284" y="76.581" size="1.778" layer="95"/>
 <attribute name="VALUE" x="113.284" y="71.501" size="1.778" layer="96"/>
 </instance>
-<instance part="C6" gate="G$1" x="139.7" y="76.2" smashed="yes">
+<instance part="C2" gate="G$1" x="139.7" y="76.2" smashed="yes">
 <attribute name="NAME" x="141.224" y="76.581" size="1.778" layer="95"/>
 <attribute name="VALUE" x="141.224" y="71.501" size="1.778" layer="96"/>
 </instance>
@@ -5398,16 +5398,19 @@ Source: DCJ0303.pdf</description>
 <wire x1="101.6" y1="5.08" x2="96.52" y2="5.08" width="0.1524" layer="91"/>
 <junction x="101.6" y="5.08"/>
 <label x="88.9" y="5.08" size="1.778" layer="95"/>
+<label x="91.44" y="2.54" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="GND"/>
 <wire x1="58.42" y1="7.62" x2="63.5" y2="7.62" width="0.1524" layer="91"/>
 <label x="63.5" y="7.62" size="1.778" layer="95"/>
+<label x="63.5" y="10.16" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="FLOWSENSOR1" gate="G$1" pin="GND"/>
 <wire x1="198.12" y1="50.8" x2="193.04" y2="50.8" width="0.1524" layer="91"/>
 <label x="187.96" y="50.8" size="1.778" layer="95"/>
+<label x="190.5" y="48.26" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="VALVE1" gate="G$1" pin="P$2"/>
@@ -5418,6 +5421,7 @@ Source: DCJ0303.pdf</description>
 <wire x1="226.06" y1="27.94" x2="226.06" y2="20.32" width="0.1524" layer="91"/>
 <junction x="226.06" y="20.32"/>
 <label x="231.14" y="20.32" size="1.778" layer="95"/>
+<label x="223.52" y="15.24" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="J1" gate="G$1" pin="2"/>
@@ -5425,7 +5429,7 @@ Source: DCJ0303.pdf</description>
 <label x="101.6" y="76.2" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="C5" gate="G$1" pin="1"/>
+<pinref part="C1" gate="G$1" pin="1"/>
 <wire x1="111.76" y1="71.12" x2="111.76" y2="68.58" width="0.1524" layer="91"/>
 <label x="111.76" y="66.04" size="1.778" layer="95"/>
 </segment>
@@ -5435,7 +5439,7 @@ Source: DCJ0303.pdf</description>
 <label x="127" y="66.04" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="C6" gate="G$1" pin="1"/>
+<pinref part="C2" gate="G$1" pin="1"/>
 <wire x1="139.7" y1="71.12" x2="139.7" y2="68.58" width="0.1524" layer="91"/>
 <label x="139.7" y="66.04" size="1.778" layer="95"/>
 </segment>
@@ -5445,6 +5449,7 @@ Source: DCJ0303.pdf</description>
 <pinref part="FLOWSENSOR1" gate="G$1" pin="VCC"/>
 <wire x1="198.12" y1="55.88" x2="193.04" y2="55.88" width="0.1524" layer="91"/>
 <label x="190.5" y="55.88" size="1.778" layer="95"/>
+<label x="198.12" y="58.42" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="K1" gate="G$1" pin="A1"/>
@@ -5460,6 +5465,7 @@ Source: DCJ0303.pdf</description>
 <wire x1="101.6" y1="45.72" x2="96.52" y2="45.72" width="0.1524" layer="91"/>
 <junction x="101.6" y="45.72"/>
 <label x="91.44" y="45.72" size="1.778" layer="95"/>
+<label x="93.98" y="40.64" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="VIN"/>
@@ -5473,7 +5479,7 @@ Source: DCJ0303.pdf</description>
 <junction x="139.7" y="81.28"/>
 <label x="152.4" y="83.82" size="1.778" layer="95"/>
 <pinref part="U2" gate="A1" pin="VO"/>
-<pinref part="C6" gate="G$1" pin="2"/>
+<pinref part="C2" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="12V" class="0">
@@ -5481,12 +5487,13 @@ Source: DCJ0303.pdf</description>
 <pinref part="K1" gate="G$1" pin="COM"/>
 <wire x1="157.48" y1="43.18" x2="162.56" y2="43.18" width="0.1524" layer="91"/>
 <label x="165.1" y="43.18" size="1.778" layer="95"/>
+<label x="165.1" y="40.64" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="J1" gate="G$1" pin="1"/>
 <pinref part="U2" gate="A1" pin="VI"/>
 <wire x1="96.52" y1="81.28" x2="111.76" y2="81.28" width="0.1524" layer="91"/>
-<pinref part="C5" gate="G$1" pin="2"/>
+<pinref part="C1" gate="G$1" pin="2"/>
 <wire x1="111.76" y1="81.28" x2="116.84" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="78.74" x2="111.76" y2="81.28" width="0.1524" layer="91"/>
 <junction x="111.76" y="81.28"/>
@@ -5531,23 +5538,18 @@ Source: DCJ0303.pdf</description>
 <wire x1="101.6" y1="35.56" x2="101.6" y2="30.48" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="LED" class="0">
-<segment>
-<pinref part="U1" gate="G$1" pin="D0"/>
-<wire x1="58.42" y1="48.26" x2="63.5" y2="48.26" width="0.1524" layer="91"/>
-<label x="66.04" y="48.26" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="FLOW_1" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="D1"/>
 <wire x1="58.42" y1="45.72" x2="63.5" y2="45.72" width="0.1524" layer="91"/>
 <label x="66.04" y="45.72" size="1.778" layer="95"/>
+<label x="76.2" y="45.72" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="FLOWSENSOR1" gate="G$1" pin="OUT"/>
 <wire x1="226.06" y1="53.34" x2="231.14" y2="53.34" width="0.1524" layer="91"/>
 <label x="223.52" y="50.8" size="1.778" layer="95"/>
+<label x="223.52" y="55.88" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="RLY_1" class="0">
@@ -5560,9 +5562,10 @@ Source: DCJ0303.pdf</description>
 <pinref part="U1" gate="G$1" pin="D2"/>
 <wire x1="58.42" y1="43.18" x2="63.5" y2="43.18" width="0.1524" layer="91"/>
 <label x="66.04" y="43.18" size="1.778" layer="95"/>
+<label x="66.04" y="40.64" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="NO_1" class="0">
+<net name="NO" class="0">
 <segment>
 <pinref part="VALVE1" gate="G$1" pin="P$1"/>
 <wire x1="198.12" y1="20.32" x2="195.58" y2="20.32" width="0.1524" layer="91"/>
@@ -5572,23 +5575,29 @@ Source: DCJ0303.pdf</description>
 <wire x1="208.28" y1="27.94" x2="195.58" y2="27.94" width="0.1524" layer="91"/>
 <wire x1="195.58" y1="27.94" x2="195.58" y2="20.32" width="0.1524" layer="91"/>
 <junction x="195.58" y="20.32"/>
+<label x="193.04" y="15.24" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="K1" gate="G$1" pin="NO"/>
 <wire x1="157.48" y1="45.72" x2="162.56" y2="45.72" width="0.1524" layer="91"/>
 <label x="165.1" y="45.72" size="1.778" layer="95"/>
+<label x="162.56" y="48.26" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="NC_1" class="0">
+<net name="NC" class="0">
 <segment>
 <pinref part="K1" gate="G$1" pin="NC"/>
 <wire x1="157.48" y1="38.1" x2="162.56" y2="38.1" width="0.1524" layer="91"/>
 <label x="165.1" y="38.1" size="1.778" layer="95"/>
+<label x="167.64" y="35.56" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="113,1,93.218,79.7154,J1,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 <compatibility>
