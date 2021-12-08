@@ -351,11 +351,12 @@ The data was then displayed on an interface where consumption metrics, over a pe
 
 The system developed aggregated multiple meters and performed loss analysis hence detecting water leakage. SMS, call, email and [tweet](https://twitter.com/smart_water_app/status/1463631460607344641?t=qJkpamW6DDiH7IFD41dn9Q&s=19) alerts allowed appropriate actions to be taken. 
 
-> ![tweet](https://user-images.githubusercontent.com/72353423/143766827-0022bb13-15cc-4861-93f9-f9cb8a5c96c8.jpeg)        ![image](https://user-images.githubusercontent.com/72353423/143766895-02cd9f7e-3cf2-47e9-b354-a3d82ffe1718.png)       ![image](https://user-images.githubusercontent.com/72353423/143768181-25a4407a-3a68-4cc4-81e2-e6e915688a84.png)
+> ![tweet](https://user-images.githubusercontent.com/72353423/145271730-a4b6c52e-1eab-4cfb-8faf-6397be69628d.jpeg)        ![image](https://user-images.githubusercontent.com/72353423/143766895-02cd9f7e-3cf2-47e9-b354-a3d82ffe1718.png)       ![image](https://user-images.githubusercontent.com/72353423/143768181-25a4407a-3a68-4cc4-81e2-e6e915688a84.png)
 
 Users could control water supply remotely from the interface based on actionable decisions.
 
-> ![closed](https://user-images.githubusercontent.com/72353423/143767131-f9ac1499-9940-4962-b76b-2b50bb99aceb.jpeg)     ![opened](https://user-images.githubusercontent.com/72353423/143767141-f0ab6927-3d19-4455-b9dc-a5055858f736.jpeg)
+> ![closed](https://user-images.githubusercontent.com/72353423/145272087-e0d91bce-a0c5-4418-b2a8-77307b85ffaa.jpeg)
+> ![opened](https://user-images.githubusercontent.com/72353423/145272118-303abfb3-8c7b-46ad-967f-6e103b692afe.jpeg)
 > ![image](https://user-images.githubusercontent.com/72353423/143767154-0f6dbd26-84ef-49ef-926b-4a0874bd9bb8.png)
 
 ## Conclusion
