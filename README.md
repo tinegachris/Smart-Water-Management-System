@@ -22,23 +22,23 @@ I acknowledge the efforts of my project partner Mr [Thoenes Kimani](https://www.
 ## System Overview
 The system consists of four functional modules, namely: the physical device, the gateway through which the device communicates with the backend service, the backend that allows storage of data, analysis, data access and notifications and the interface that allows visualization and control.
 
-![image](https://user-images.githubusercontent.com/72353423/143724646-886294ce-60d6-4c2c-a9ac-f0be3e5e747e.png)
+>![image](https://user-images.githubusercontent.com/72353423/143724646-886294ce-60d6-4c2c-a9ac-f0be3e5e747e.png)
 
 ## System Diagram
 The system consists of three meters: the supply meter, 1 and customer meters, 2 and 3 as shown below.
 
-![image](https://user-images.githubusercontent.com/72353423/143724678-79026a4c-a063-4c91-a661-bc4c0a2afb88.png)
+>![image](https://user-images.githubusercontent.com/72353423/143724678-79026a4c-a063-4c91-a661-bc4c0a2afb88.png)
 
 ## Flow Chart
 The system’s flow chart diagram is as shown in the figure below.
 
-![image](https://user-images.githubusercontent.com/72353423/143724711-998635d7-13cf-4d9c-80db-d8c720d86887.png)
+>![image](https://user-images.githubusercontent.com/72353423/143724711-998635d7-13cf-4d9c-80db-d8c720d86887.png)
 
 ## System Components
 
 1. **Three NodeMCU ESP8266** - [Component Overview](https://components101.com/development-boards/nodemcu-esp8266-pinout-features-and-datasheet)
 2. **Three YF-S201 Hall Effect Water Flow Sensor** - [Component Overview](https://components101.com/sensors/yf-s201-water-flow-measurement-sensor)
-3. **Three 2 Way, 2 Position, 12 VDC, 0.5 Inch, NC Solenoid Valve** - [Particular](https://www.twinschip.com/Solenoid_Valve_DC12V_0.5inch_Normally_Closed) ~~*Not an affiliate link~~
+3. **Three 2 Way, 2 Position, 12 VDC, 0.5 Inch, NC Solenoid Valve** - [Particular](https://www.twinschip.com/Solenoid_Valve_DC12V_0.5inch_Normally_Closed) ~~Not an affiliate link~~
 4. **Three SRD-05VDC-SL-C Relay Module** - [Component Overview](https://elearn.ellak.gr/mod/book/view.php?id=4568&chapterid=2440)
 5. **Three Power Supply Adapter 12V 2A**
 6. **0.5 Inch Clear hose pipe - approx. 3 meters**
@@ -51,7 +51,13 @@ The schematic diagram of the system was designed using Autodesk's Eagle EDA soft
 
 Custom libraries for the solenoid valve and the water flow sensor were created.
 
-![image](https://user-images.githubusercontent.com/72353423/143725199-f4645274-cabb-4db8-8399-71c8b1603733.png)
+>![sch](https://user-images.githubusercontent.com/72353423/145267859-94879ac2-70a4-43a9-8a8a-849b70cd0a8e.jpg)
+
+## PCB Design
+
+Design of the board from the schematic diagram was done as shown below. 
+
+>![brd](https://user-images.githubusercontent.com/72353423/145268059-74bae5a3-d1b7-4ab7-b7ba-0f6ab30b571d.jpg)
 
 ## Firmware Walkthrough
 
@@ -304,25 +310,25 @@ The status of solenoid valve i.e. if it is open or closed is checked from the co
 
 The MATLAB Analysis app was used to perform loss analysis as shown below.
 
-![image](https://user-images.githubusercontent.com/72353423/143726415-56e53196-edf4-4f54-a19c-f3d33ab226ca.png)
+>![image](https://user-images.githubusercontent.com/72353423/143726415-56e53196-edf4-4f54-a19c-f3d33ab226ca.png)
 
 - ### ThingTweet
 
 The ThingTweet app is utilized to send alert consumers via a tweet that the supply meter valve is closed due to any predetermined circumstance is encountered. The tweet is configured as below.
 
-![image](https://user-images.githubusercontent.com/72353423/143726436-f2adc767-de1d-419e-afd9-4d635c46bcc0.png)
+>![image](https://user-images.githubusercontent.com/72353423/143726436-f2adc767-de1d-419e-afd9-4d635c46bcc0.png)
 
 - ### TimeControl
 
 TimeControl app feature was used in loss analysis calculation where losses due to leakages was calculated every 5 minutes as shown in the configuration below.
 
-![image](https://user-images.githubusercontent.com/72353423/143726462-ee1d3176-6987-41e1-803f-9ecf218db4f1.png)
+>![image](https://user-images.githubusercontent.com/72353423/143726462-ee1d3176-6987-41e1-803f-9ecf218db4f1.png)
 
 - ### React
 
 React app feature was also used in the project in several instances such as sending email, SMS and VoIP calls when a certain condition is encountered.
 
-![image](https://user-images.githubusercontent.com/72353423/143726570-775248b6-6de2-47a6-9685-e00a263ea586.png)
+>![image](https://user-images.githubusercontent.com/72353423/143726570-775248b6-6de2-47a6-9685-e00a263ea586.png)
 
 ## **Interface**
 The android app used as interface to visualize consumption data and control water supply remotely was designed using [MIT App Inventor](https://appinventor.mit.edu/).
@@ -337,7 +343,7 @@ Download and install the [android app](https://github.com/tinegachris/Smart-Wate
 
 The system utilized IoT solutions to enable remote and automatic and real-time measurement of water consumption data which is transmitted to a remote server for manipulation and analysis. 
 
-![image](https://user-images.githubusercontent.com/72353423/143767085-4a4b431b-d1fb-4f2b-97e7-3d9114339855.png)
+>![image](https://user-images.githubusercontent.com/72353423/143767085-4a4b431b-d1fb-4f2b-97e7-3d9114339855.png)
 
 The data was then displayed on an interface where consumption metrics, over a period, was be viewed. 
 
