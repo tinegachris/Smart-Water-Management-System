@@ -17,7 +17,7 @@ publishAs: Chrispine Tinega
  the origin url as canonical url */ 
 canonical: CANONICAL_URL_OF_ARTICLE 
 /* Only if you don't want this article to be published yet */ 
-/* ignorePost: true */
+
 ---
 ## Abstract
 The Smart Water Management System project aggregates three meters to enable remote and automatic real-time measurement of water consumption. Based on actionable decisions such as water leakage and consumption metrics, water supply through the pipes is controlled using solenoid valves. The consumer and the supplier can monitor, visualize consumption metrics and control the system through the designed android interface.
