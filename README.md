@@ -9,27 +9,33 @@
 [![GitHub stars](https://img.shields.io/github/stars/tinegachris/Smart-Water-Management-System.svg?style=social&label=Sta)](https://github.com/tinegachris/Smart-Water-Management-System/stargazers)
 
 # Smart-Water-Management-System
+
 >Final Project 2021
 
 ![system pic](https://user-images.githubusercontent.com/72353423/143723893-957b3019-5a33-4039-9fa1-18d72518ff67.jpeg)
 
 ## Abstract
+
 The Smart Water Management System project aggregates three meters to enable remote and automatic real-time measurement of water consumption. Based on actionable decisions such as water leakage and consumption metrics, water supply through the pipes is controlled using solenoid valves. The consumer and the supplier can monitor, visualize consumption metrics and control the system through the designed android interface.
 
 ## Acknowledgement
+
 I acknowledge the efforts of my project partner Mr [Thoenes Kimani](https://www.linkedin.com/in/thoenes-kimani-607682186/) and my project supervisor Mr [Samson N. Njoroge](https://www.linkedin.com/in/samson-n-njoroge-23a77817/?originalSubdomain=ke), for ensuring this project was successful. Many thanks to all our friends and family for the encouragement and support throughout the period.
 
 ## System Overview
+
 The system consists of four functional modules, namely: the physical device, the gateway through which the device communicates with the backend service, the backend that allows storage of data, analysis, data access and notifications and the interface that allows visualization and control.
 
 >![image](https://user-images.githubusercontent.com/72353423/143724646-886294ce-60d6-4c2c-a9ac-f0be3e5e747e.png)
 
 ## System Diagram
+
 The system consists of three meters: the supply meter, 1 and customer meters, 2 and 3 as shown below.
 
 >![image](https://user-images.githubusercontent.com/72353423/143724678-79026a4c-a063-4c91-a661-bc4c0a2afb88.png)
 
 ## Flow Chart
+
 The system’s flow chart diagram is as shown in the figure below.
 
 >![image](https://user-images.githubusercontent.com/72353423/143724711-998635d7-13cf-4d9c-80db-d8c720d86887.png)
@@ -47,7 +53,7 @@ The system’s flow chart diagram is as shown in the figure below.
 
 ## Schematic Diagram
 
-The schematic diagram of the system was designed using Autodesk's Eagle EDA software illustrating how the various components are interconnected. 
+The schematic diagram of the system was designed using Autodesk's Eagle EDA software illustrating how the various components are interconnected.
 
 Custom libraries for the solenoid valve and the water flow sensor were created.
 
@@ -55,14 +61,13 @@ Custom libraries for the solenoid valve and the water flow sensor were created.
 
 ## PCB Design
 
-Design of the board from the schematic diagram was done as shown below. 
+Design of the board from the schematic diagram was done as shown below.
 
 >![brd](https://user-images.githubusercontent.com/72353423/145268059-74bae5a3-d1b7-4ab7-b7ba-0f6ab30b571d.jpg)
 
 ## Firmware Walkthrough
 
 - **Libraries**
-
 
 The ESP8266WiFi, ESP8266WebServer, ESP8266mDNS and the ThingSpeak libraries were included.
 
@@ -72,9 +77,11 @@ The ESP8266WiFi, ESP8266WebServer, ESP8266mDNS and the ThingSpeak libraries were
 #include <ESP8266mDNS.h> // mDNS library
 #include<ThingSpeak.h> // ThingSpeak library
 ```
+
 - **Variables and Constants**
 
 The variables and constants were defined as follows.
+
 ```
 const int measuringInterval = 0.1 * 1000; // measure flow every 1 second
 const int postingInterval = 15 * 1000; // post data every 15 seconds
@@ -96,6 +103,7 @@ unsigned int valve1 = 4;
 - **Wi-Fi Settings**
 
 The SSID and password are set to allow the NodeMCU to connect to a network
+
 ```
 const char* ssid = "mySSID"; // wireless network name (SSID)
 const char* password = "myPassword"; // Wi-Fi network password
@@ -104,6 +112,7 @@ const char* password = "myPassword"; // Wi-Fi network password
 - **ThingSpeak Settings**
 
 ThingSpeak credentials and API key are set to allow sending data to specific channel.
+
 ```
 // ThingSpeak Settings
 const int channelID = YYYYYYY;
@@ -114,6 +123,7 @@ const char* server = "api.thingspeak.com";
 - **Serial Communication**
 
 The baud rate for serial communication  set was to 115200.
+
 ```
   void setup() {
   Serial.begin(115200); // Start the Serial communication
@@ -136,6 +146,7 @@ The baud rate for serial communication  set was to 115200.
 - **Connect to Wi-Fi network**
 
 The NodeMCU waits until it is connected to a network then sends the IP address, Netmask and Gateway to the serial monitor.
+
 ```
 WiFi.begin(ssid, password);             // Connect to the WiFi network
   Serial.print("Connecting to ");
@@ -160,6 +171,7 @@ WiFi.begin(ssid, password);             // Connect to the WiFi network
 - **Measure Wi-Fi Strength**
 
 The Wi-Fi strength is measured and sent to the serial monitor.
+
 ```
 // Measure Signal Strength (RSSI) of Wi-Fi connection
 long rssi = WiFi.RSSI();
@@ -170,6 +182,7 @@ Serial.println("signal strength: " + strgth + "dB\n");
 - **HTTP server**
 
 The HTTP server that listens for HTTP request on port 80. The mDNS responder is also started to resolve IP address to a local domain name.
+
 ```
   // Create a webserver object that listens for HTTP request on port 80
   ESP8266WebServer server(80);
@@ -193,11 +206,14 @@ The HTTP server that listens for HTTP request on port 80. The mDNS responder is 
 - **FLow Sensor Interrrupt**
 
 An interrupt and a call function is created to detect water flow when the falling edge of the pulse is received.
+
 ```
 //create interrupt and call a function when change is detected
   attachInterrupt(digitalPinToInterrupt(flowSensor_1), pulseCounter_1, FALLING);
 ```
+
 The pulse count is incremented for every pulse that is detected.
+
 ```
 void IRAM_ATTR pulseCounter_1(){
   pulseCount_1++;
@@ -207,6 +223,7 @@ void IRAM_ATTR pulseCounter_1(){
 - **Flowrate and Volume Calculation**
 
 The flowrate and volume through the meter is measured and calculated after every measuring interval. The total volume is the cumulative volume in the entire measuring time.
+
 ```
 currentMillis = millis();
   // calculate after every measuring interval
@@ -246,6 +263,7 @@ currentMillis = millis();
 - **API request body**
 
 The body of API request with consumption data are constructed waiting to be posted to ThingSpeak on specific fields.
+
 ```
       // Construct API request body
       String body = "field1=";
@@ -260,6 +278,7 @@ The body of API request with consumption data are constructed waiting to be post
 - **Post to ThingSpeak**
 
 The API requests bodies are written to the corresponding fields on ThingSpeak on the specified channel. Feedback on if the data was sent successfully is sent to the serial monitor.
+
 ```
       client.print("POST /update HTTP/1.1\n");
       client.print("Host: api.thingspeak.com\n");
@@ -277,6 +296,7 @@ The API requests bodies are written to the corresponding fields on ThingSpeak on
 - **Solenoid Valve Status**
 
 The status of solenoid valve i.e. if it is open or closed is checked from the control feed and status sent to the serial monitor.
+
 ```
       //get the last data of the fields
       int valve_1 = ThingSpeak.readFloatField(controlChannelID, valve1);
@@ -306,7 +326,7 @@ The status of solenoid valve i.e. if it is open or closed is checked from the co
 
 ## **ThingSpeak Apps**
 
-- ### MATLAB Analysis 
+- ### MATLAB Analysis
 
 The MATLAB Analysis app was used to perform loss analysis as shown below.
 
@@ -331,9 +351,10 @@ React app feature was also used in the project in several instances such as send
 >![image](https://user-images.githubusercontent.com/72353423/143726570-775248b6-6de2-47a6-9685-e00a263ea586.png)
 
 ## **Interface**
+
 The android app used as interface to visualize consumption data and control water supply remotely was designed using [MIT App Inventor](https://appinventor.mit.edu/).
 
-The [.aia source code](https://github.com/tinegachris/Smart-Water-Management-System/blob/main/Smart_Water_App.aia) file is attached. 
+The [.aia source code](https://github.com/tinegachris/Smart-Water-Management-System/blob/main/Smart_Water_App.aia) file is attached.
 
 Download and install the [android app](https://github.com/tinegachris/Smart-Water-Management-System/blob/main/Smart_Water_App.app)
 
@@ -341,15 +362,15 @@ Download and install the [android app](https://github.com/tinegachris/Smart-Wate
 
 ## Results
 
-The system utilized IoT solutions to enable remote and automatic and real-time measurement of water consumption data which is transmitted to a remote server for manipulation and analysis. 
+The system utilized IoT solutions to enable remote and automatic and real-time measurement of water consumption data which is transmitted to a remote server for manipulation and analysis.
 
 >![image](https://user-images.githubusercontent.com/72353423/143767085-4a4b431b-d1fb-4f2b-97e7-3d9114339855.png)
 
-The data was then displayed on an interface where consumption metrics, over a period, was be viewed. 
+The data was then displayed on an interface where consumption metrics, over a period, was be viewed.
 
 > ![1](https://user-images.githubusercontent.com/72353423/143765805-cafc4de6-42e1-433c-a72a-d6aa19b62829.jpeg)                        ![2](https://user-images.githubusercontent.com/72353423/143765811-6a02cca4-9843-4eb9-853c-c3ec72c49c56.jpeg)
 
-The system developed aggregated multiple meters and performed loss analysis hence detecting water leakage. SMS, call, email and [tweet](https://twitter.com/smart_water_app/status/1463631460607344641?t=qJkpamW6DDiH7IFD41dn9Q&s=19) alerts allowed appropriate actions to be taken. 
+The system developed aggregated multiple meters and performed loss analysis hence detecting water leakage. SMS, call, email and [tweet](https://twitter.com/smart_water_app/status/1463631460607344641?t=qJkpamW6DDiH7IFD41dn9Q&s=19) alerts allowed appropriate actions to be taken.
 
 > ![tweet](https://user-images.githubusercontent.com/72353423/145271730-a4b6c52e-1eab-4cfb-8faf-6397be69628d.jpeg)        ![image](https://user-images.githubusercontent.com/72353423/143766895-02cd9f7e-3cf2-47e9-b354-a3d82ffe1718.png)       ![image](https://user-images.githubusercontent.com/72353423/143768181-25a4407a-3a68-4cc4-81e2-e6e915688a84.png)
 
