@@ -28,17 +28,27 @@ The system consists of four functional modules, namely: the physical device, the
 
 >![image](https://user-images.githubusercontent.com/72353423/143724646-886294ce-60d6-4c2c-a9ac-f0be3e5e747e.png)
 
-## System Diagram
+## Concept Diagram
+
+The Concept Diagram provides an overview of the system's architecture, illustrating the main components and their relationships. It helps in understanding the high-level design and the flow of data between different parts of the system.
 
 The system consists of three meters: the supply meter, 1 and customer meters, 2 and 3 as shown below.
 
 >![image](https://user-images.githubusercontent.com/72353423/143724678-79026a4c-a063-4c91-a661-bc4c0a2afb88.png)
 
-## Flow Chart
+You can view and edit the detailed Concept Diagram using the provided `.vsdx` file using Microsoft Visio app:
 
-The system’s flow chart diagram is as shown in the figure below.
+- [Concept Diagram.vsdx](https://github.com/tinegachris/Smart-Water-Management-System/blob/e62496e4574b8286091f124c95a754fc847280cd/Concept%20Diagram.vsdx)
+
+## System Flow Chart
+
+The System Flow Chart illustrates the step-by-step flow of operations within the Smart Water Management System. It shows the sequence of actions and decision points, making it easier to understand the system's logic and workflow.
 
 >![image](https://user-images.githubusercontent.com/72353423/143724711-998635d7-13cf-4d9c-80db-d8c720d86887.png)
+
+You can view and edit the detailed System Flow Chart using the provided `.vsdx` file using Microsoft Visio app:
+
+- [System Flow Chart.vsdx](https://github.com/tinegachris/Smart-Water-Management-System/blob/e62496e4574b8286091f124c95a754fc847280cd/System%20flow%20chart.vsdx)
 
 ## System Components
 
