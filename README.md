@@ -350,6 +350,56 @@ React app feature was also used in the project in several instances such as send
 
 >![image](https://user-images.githubusercontent.com/72353423/143726570-775248b6-6de2-47a6-9685-e00a263ea586.png)
 
+## App Installation and Usage Instructions
+
+### Installing the Smart Water App
+
+#### For Developers (Using .aia File)
+
+1. **Download the .aia File:**
+   - Download the [Smart_Water_App.aia](https://github.com/tinegachris/Smart-Water-Management-System/blob/main/Smart_Water_App.aia) file from the repository.
+
+2. **Open MIT App Inventor:**
+   - Go to [MIT App Inventor](https://appinventor.mit.edu/).
+
+3. **Import the .aia File:**
+   - Click on "Projects" in the top menu.
+   - Select "Import project (.aia) from my computer".
+   - Choose the downloaded .aia file and click "OK".
+
+4. **Build the App:**
+   - After importing, you can modify the app as needed.
+   - To build the app, click on "Build" in the top menu and select "App (provide QR code for .apk)" or "App (save .apk to my computer)".
+
+#### For Users (Using .apk File)
+
+1. **Download the .apk File:**
+   - Download the [Smart_Water_App.apk](https://github.com/tinegachris/Smart-Water-Management-System/blob/main/Smart_Water_App.apk) file from the repository.
+
+2. **Enable Unknown Sources:**
+   - On your Android device, go to "Settings".
+   - Navigate to "Security" or "Applications" (depending on your device).
+   - Enable "Unknown sources" to allow installation of apps from sources other than the Google Play Store.
+
+3. **Install the App:**
+   - Open the downloaded .apk file on your Android device.
+   - Follow the on-screen instructions to install the app.
+
+### Using the Smart Water App
+
+1. **Open the App:**
+   - Locate the Smart Water App icon on your device and open it.
+
+2. **Login:**
+   - Enter your credentials to log in to the app.
+
+3. **Monitor and Control:**
+   - Use the app interface to monitor water consumption metrics.
+   - Control the water supply through the solenoid valves remotely.
+
+4. **Alerts and Notifications:**
+   - Receive alerts and notifications for water leakage and other actionable events.
+
 ## **Interface**
 
 The android app used as interface to visualize consumption data and control water supply remotely was designed using [MIT App Inventor](https://appinventor.mit.edu/).
